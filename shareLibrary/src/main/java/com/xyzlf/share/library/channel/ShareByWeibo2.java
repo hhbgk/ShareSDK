@@ -1,5 +1,6 @@
 package com.xyzlf.share.library.channel;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -9,8 +10,9 @@ import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
-import android.support.v4.content.ContextCompat;
 import android.text.TextUtils;
+
+import androidx.core.content.ContextCompat;
 
 import com.xyzlf.share.library.R;
 import com.xyzlf.share.library.bean.ShareEntity;
@@ -87,6 +89,7 @@ public class ShareByWeibo2 extends ShareBase {
         }
     }
 
+    @SuppressLint("StaticFieldLeak")
     private void localSyncTask(final Bitmap bitmap) {
         new AbstractAsyncTask<String>() {
             @Override
@@ -103,6 +106,7 @@ public class ShareByWeibo2 extends ShareBase {
         }.execute();
     }
 
+    @SuppressLint("StaticFieldLeak")
     private void localSyncTask() {
         if (!TextUtils.isEmpty(data.getImgUrl()) && !data.getImgUrl().startsWith("http")) {
             new AbstractAsyncTask<String>() {

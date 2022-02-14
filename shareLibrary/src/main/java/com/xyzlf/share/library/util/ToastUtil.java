@@ -1,9 +1,10 @@
 package com.xyzlf.share.library.util;
 
 import android.content.Context;
-import android.support.annotation.StringRes;
 import android.text.TextUtils;
 import android.widget.Toast;
+
+import androidx.annotation.StringRes;
 
 /**
  * Created by zhanglifeng
