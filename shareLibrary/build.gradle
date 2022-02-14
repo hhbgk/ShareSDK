@@ -2,14 +2,15 @@ apply plugin: 'com.android.library'
 
 
 android {
-    compileSdk 30
-    buildToolsVersion '30.0.3'
+    compileSdk 31
+    buildToolsVersion '31.0.0'
 
     defaultConfig {
         minSdkVersion 14
-        targetSdkVersion 30
-        versionCode 1
-        versionName "0.0.1"
+        targetSdkVersion 31
+        versionCode 100
+        versionName "0.1.0"
+        setProperty("archivesBaseName", "shareLibrary_v${versionName}")
     }
     buildTypes {
         release {
