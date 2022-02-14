@@ -86,7 +86,7 @@ public class ShareDialogActivity extends ShareBaseActivity implements AdapterVie
 
     private void initChannelData() {
         channelEntities = new ArrayList<>();
-        /** weixin **/
+        // weixin
         if (ChannelUtil.isWeixinInstall(this)) {
             if ((channel & ShareConstant.SHARE_CHANNEL_WEIXIN_FRIEND) > 0 && isShowChannel(ShareConstant.SHARE_CHANNEL_WEIXIN_FRIEND)) {
                 channelEntities.add(new ChannelEntity(ShareConstant.SHARE_CHANNEL_WEIXIN_FRIEND, R.drawable.share_wechat, getString(R.string.share_channel_weixin_friend)));
@@ -95,23 +95,23 @@ public class ShareDialogActivity extends ShareBaseActivity implements AdapterVie
                 channelEntities.add(new ChannelEntity(ShareConstant.SHARE_CHANNEL_WEIXIN_CIRCLE, R.drawable.share_wxcircle, getString(R.string.share_channel_weixin_circle)));
             }
         }
-        /** QQ **/
-        if (ChannelUtil.isQQInstall(this)) {
-            if ((channel & ShareConstant.SHARE_CHANNEL_QQ) > 0 && isShowChannel(ShareConstant.SHARE_CHANNEL_QQ)) {
-                channelEntities.add(new ChannelEntity(ShareConstant.SHARE_CHANNEL_QQ, R.drawable.share_qq, getString(R.string.share_channel_qq)));
-            }
-            if ((channel & ShareConstant.SHARE_CHANNEL_QZONE) > 0 && isShowChannel(ShareConstant.SHARE_CHANNEL_QZONE)) {
-                channelEntities.add(new ChannelEntity(ShareConstant.SHARE_CHANNEL_QZONE, R.drawable.share_qzone, getString(R.string.share_channel_qzone)));
-            }
-        }
-        /** weibo **/
+        // QQ
+//        if (ChannelUtil.isQQInstall(this)) {
+//            if ((channel & ShareConstant.SHARE_CHANNEL_QQ) > 0 && isShowChannel(ShareConstant.SHARE_CHANNEL_QQ)) {
+//                channelEntities.add(new ChannelEntity(ShareConstant.SHARE_CHANNEL_QQ, R.drawable.share_qq, getString(R.string.share_channel_qq)));
+//            }
+//            if ((channel & ShareConstant.SHARE_CHANNEL_QZONE) > 0 && isShowChannel(ShareConstant.SHARE_CHANNEL_QZONE)) {
+//                channelEntities.add(new ChannelEntity(ShareConstant.SHARE_CHANNEL_QZONE, R.drawable.share_qzone, getString(R.string.share_channel_qzone)));
+//            }
+//        }
+        // weibo
         if ((channel & ShareConstant.SHARE_CHANNEL_SINA_WEIBO) > 0 && isShowChannel(ShareConstant.SHARE_CHANNEL_SINA_WEIBO)) {
             channelEntities.add(new ChannelEntity(ShareConstant.SHARE_CHANNEL_SINA_WEIBO, R.drawable.share_weibo, getString(R.string.share_channel_weibo)));
         }
-        /** more **/
-        if ((channel & ShareConstant.SHARE_CHANNEL_SYSTEM) > 0 && isShowChannel(ShareConstant.SHARE_CHANNEL_SYSTEM)) {
-            channelEntities.add(new ChannelEntity(ShareConstant.SHARE_CHANNEL_SYSTEM, R.drawable.share_more, getString(R.string.share_channel_more)));
-        }
+        // more
+//        if ((channel & ShareConstant.SHARE_CHANNEL_SYSTEM) > 0 && isShowChannel(ShareConstant.SHARE_CHANNEL_SYSTEM)) {
+//            channelEntities.add(new ChannelEntity(ShareConstant.SHARE_CHANNEL_SYSTEM, R.drawable.share_more, getString(R.string.share_channel_more)));
+//        }
     }
 
     private boolean isShowChannel(int channel) {
@@ -126,7 +126,7 @@ public class ShareDialogActivity extends ShareBaseActivity implements AdapterVie
 
     private void initView() {
         AppGridAdapter adapter = new AppGridAdapter();
-        GridView shareGridView = (GridView) findViewById(R.id.share_grid);
+        GridView shareGridView = findViewById(R.id.share_grid);
         shareGridView.setAdapter(adapter);
         shareGridView.setOnItemClickListener(this);
     }
@@ -273,8 +273,8 @@ public class ShareDialogActivity extends ShareBaseActivity implements AdapterVie
             if (convertView == null) {
                 holder = new ViewHolder();
                 convertView = getLayoutInflater().inflate(R.layout.share_gridview_item, parent, false);
-                holder.textView = (TextView) convertView.findViewById(R.id.text);
-                holder.imageView = (ImageView) convertView.findViewById(R.id.image);
+                holder.textView = convertView.findViewById(R.id.text);
+                holder.imageView = convertView.findViewById(R.id.image);
                 convertView.setTag(holder);
             } else {
                 holder = (ViewHolder) convertView.getTag();
@@ -286,29 +286,9 @@ public class ShareDialogActivity extends ShareBaseActivity implements AdapterVie
         }
     }
 
-    private class ViewHolder {
+    private static class ViewHolder {
         public TextView textView;
         public ImageView imageView;
-    }
-
-    @Override
-    public boolean onTouchEvent(MotionEvent event) {
-        //API小于11 点击外部消失
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.HONEYCOMB) {
-            if (event.getAction() == MotionEvent.ACTION_DOWN && isOutOfBounds(this, event)) {
-                finish();
-                return true;
-            }
-        }
-        return super.onTouchEvent(event);
-    }
-
-    private boolean isOutOfBounds(Activity context, MotionEvent event) {
-        final int x = (int) event.getX();
-        final int y = (int) event.getY();
-        final int slop = ViewConfiguration.get(context).getScaledWindowTouchSlop();
-        final View decorView = context.getWindow().getDecorView();
-        return (x < -slop) || (y < -slop) || (x > (decorView.getWidth() + slop)) || (y > (decorView.getHeight() + slop));
     }
 
 
