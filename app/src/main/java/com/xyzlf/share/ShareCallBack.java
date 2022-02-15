@@ -4,7 +4,7 @@ package com.xyzlf.share;
 import android.util.Log;
 
 import com.xyzlf.share.library.interfaces.ShareConstant;
-import com.xyzlf.share.library.util.ToastUtil;
+import com.xyzlf.share.util.ToastUtil;
 
 /**
  * Created by zhanglifeng on 2016/6/22

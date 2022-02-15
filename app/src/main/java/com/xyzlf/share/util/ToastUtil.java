@@ -1,4 +1,4 @@
-package com.xyzlf.share.library.util;
+package com.xyzlf.share.util;
 
 import android.content.Context;
 import android.text.TextUtils;

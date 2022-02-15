@@ -27,7 +27,6 @@ import com.xyzlf.share.library.interfaces.OnShareListener;
 import com.xyzlf.share.library.interfaces.ShareConstant;
 import com.xyzlf.share.library.request.BitmapAsyncTask;
 import com.xyzlf.share.library.util.ManifestUtil;
-import com.xyzlf.share.library.util.ToastUtil;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;

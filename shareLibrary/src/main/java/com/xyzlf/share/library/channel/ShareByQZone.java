@@ -4,15 +4,14 @@ import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 
 import com.tencent.connect.share.QzoneShare;
 import com.tencent.tauth.IUiListener;
 import com.tencent.tauth.UiError;
-import com.xyzlf.share.library.R;
 import com.xyzlf.share.library.bean.ShareEntity;
 import com.xyzlf.share.library.interfaces.OnShareListener;
 import com.xyzlf.share.library.interfaces.ShareConstant;
-import com.xyzlf.share.library.util.ToastUtil;
 
 import java.util.ArrayList;
 
@@ -57,7 +56,8 @@ public class ShareByQZone extends ShareByQQ {
                     listener.onShare(ShareConstant.SHARE_CHANNEL_QZONE, ShareConstant.SHARE_STATUS_FAILED);
                 }
                 if (null != uiError) {
-                    ToastUtil.showToast(context, uiError.errorMessage, true);
+//                    ToastUtil.showToast(context, uiError.errorMessage, true);
+                    Log.e(tag, "uiError:" + uiError.errorMessage);
                 }
             }
             @Override

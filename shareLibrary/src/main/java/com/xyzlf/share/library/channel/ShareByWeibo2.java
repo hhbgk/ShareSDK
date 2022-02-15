@@ -22,7 +22,6 @@ import com.xyzlf.share.library.request.AbstractAsyncTask;
 import com.xyzlf.share.library.request.BitmapAsyncTask;
 import com.xyzlf.share.library.util.ChannelUtil;
 import com.xyzlf.share.library.util.ShareUtil;
-import com.xyzlf.share.library.util.ToastUtil;
 
 import java.util.List;
 

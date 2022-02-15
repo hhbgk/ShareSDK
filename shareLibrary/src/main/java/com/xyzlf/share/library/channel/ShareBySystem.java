@@ -4,12 +4,10 @@ import android.content.Context;
 import android.content.Intent;
 import android.text.TextUtils;
 
-import com.xyzlf.share.library.R;
 import com.xyzlf.share.library.bean.ShareEntity;
 import com.xyzlf.share.library.interfaces.OnShareListener;
 import com.xyzlf.share.library.interfaces.ShareConstant;
 import com.xyzlf.share.library.util.ShareUtil;
-import com.xyzlf.share.library.util.ToastUtil;
 
 /**
  * Created by zhanglifeng

@@ -11,7 +11,6 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.util.SparseArray;
 
-import com.xyzlf.share.library.R;
 import com.xyzlf.share.library.ShareDialogActivity;
 import com.xyzlf.share.library.ShareHandlerActivity;
 import com.xyzlf.share.library.bean.ShareEntity;
@@ -181,7 +180,7 @@ public class ShareUtil {
                 outputStream.flush();
                 outputStream.close();
             } catch (Exception e) {
-                ToastUtil.showToast(context, e.getMessage(), true);
+                Log.e(tag, e.getMessage());
             }
         }
         return filePath;

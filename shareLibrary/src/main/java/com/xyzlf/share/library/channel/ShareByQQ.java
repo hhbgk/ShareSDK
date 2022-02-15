@@ -6,18 +6,17 @@ import android.content.Intent;
 import android.content.pm.ResolveInfo;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 
 import com.tencent.connect.share.QQShare;
 import com.tencent.tauth.IUiListener;
 import com.tencent.tauth.Tencent;
 import com.tencent.tauth.UiError;
-import com.xyzlf.share.library.R;
 import com.xyzlf.share.library.bean.ShareEntity;
 import com.xyzlf.share.library.interfaces.OnShareListener;
 import com.xyzlf.share.library.interfaces.ShareConstant;
 import com.xyzlf.share.library.util.ManifestUtil;
 import com.xyzlf.share.library.util.ShareUtil;
-import com.xyzlf.share.library.util.ToastUtil;
 
 import java.util.List;
 
@@ -56,7 +55,8 @@ public class ShareByQQ extends ShareBase {
                     listener.onShare(ShareConstant.SHARE_CHANNEL_QQ, ShareConstant.SHARE_STATUS_FAILED);
                 }
                 if (null != uiError) {
-                    ToastUtil.showToast(context, uiError.errorMessage, true);
+//                    ToastUtil.showToast(context, uiError.errorMessage, true);
+                    Log.e(tag, "ui error:" + uiError.errorMessage);
                 }
             }
 
