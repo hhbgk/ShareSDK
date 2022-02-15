@@ -10,7 +10,7 @@ import com.xyzlf.share.library.interfaces.ShareConstant;
 
 
 public abstract class ShareBaseActivity extends FragmentActivity {
-
+    protected String tag = getClass().getSimpleName();
     protected int channel;
 
     @Override

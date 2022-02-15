@@ -9,6 +9,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.text.TextUtils;
+import android.util.Log;
 
 import androidx.core.content.ContextCompat;
 
@@ -74,6 +75,7 @@ public class ShareByWeixin extends ShareBase {
         this.data = data;
         this.listener = listener;
         if (null == data) {
+            Log.e(tag, "ShareEntity object is null");
             return;
         }
         start();

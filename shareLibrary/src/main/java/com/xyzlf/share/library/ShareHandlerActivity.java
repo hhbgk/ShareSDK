@@ -2,6 +2,7 @@ package com.xyzlf.share.library;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Window;
 
 import com.tencent.connect.common.Constants;
@@ -41,7 +42,8 @@ public class ShareHandlerActivity extends ShareBaseActivity implements /*IWeiboH
             //Fuzz问题处理
             object = getIntent().getParcelableExtra(ShareConstant.EXTRA_SHARE_DATA);
         } catch (Exception e) {}
-        if (null == object || !(object instanceof ShareEntity)) {
+        if (!(object instanceof ShareEntity)) {
+            Log.e(tag, "object is null");
             finish();
             return;
         }

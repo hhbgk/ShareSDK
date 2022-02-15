@@ -1,12 +1,15 @@
 package com.xyzlf.share;
 
 
+import android.util.Log;
+
 import com.xyzlf.share.library.interfaces.ShareConstant;
 
 /**
  * Created by zhanglifeng on 2016/6/22
  */
 public class ShareCallBack {
+    private String tag = getClass().getSimpleName();
 
     /**
      * @param channel
@@ -42,11 +45,11 @@ public class ShareCallBack {
         switch (status) {
             /** 成功 **/
             case ShareConstant.SHARE_STATUS_COMPLETE:
-
+                Log.e(tag, "WX success");
                 break;
             /** 失败 **/
             case ShareConstant.SHARE_STATUS_FAILED:
-
+                Log.e(tag, "WX failed");
                 break;
         }
     }
