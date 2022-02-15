@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         findViewById(R.id.share_qzone).setOnClickListener(this);
         findViewById(R.id.share_weibo).setOnClickListener(this);
         findViewById(R.id.share_weixin).setOnClickListener(this);
-
+        findViewById(R.id.share_wxcircle).setOnClickListener(this);
         findViewById(R.id.share_bigimage).setOnClickListener(this);
 
     }
