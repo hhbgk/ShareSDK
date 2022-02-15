@@ -21,9 +21,11 @@ public class ShareBySystem extends ShareBase {
     }
 
     @Override
-    public void share(ShareEntity data, OnShareListener listener) {
+    public void share(ShareEntity data, OnShareListener listener, String title) {
         if (data == null || TextUtils.isEmpty(data.getContent())) {
-            ToastUtil.showToast(context, R.string.share_empty_tip, true);
+            if (null != listener) {
+                listener.onShare(ShareConstant.SHARE_CHANNEL_SYSTEM, ShareConstant.SHARE_STATUS_CONTENT_EMPTY);
+            }
             return;
         }
         String content;
@@ -37,8 +39,7 @@ public class ShareBySystem extends ShareBase {
         shareIntent.setAction(Intent.ACTION_SEND);
         shareIntent.putExtra(Intent.EXTRA_TEXT, content);
         shareIntent.setType("text/plain");
-        if(ShareUtil.startActivity(context, Intent.createChooser(
-                shareIntent, context.getString(R.string.share_to)))) {
+        if(ShareUtil.startActivity(context, Intent.createChooser(shareIntent, title))) {
             if (null != listener) {
                 listener.onShare(ShareConstant.SHARE_CHANNEL_SYSTEM, ShareConstant.SHARE_STATUS_COMPLETE);
             }

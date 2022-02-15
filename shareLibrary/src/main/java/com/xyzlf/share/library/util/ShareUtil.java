@@ -28,18 +28,24 @@ public class ShareUtil {
     /**
      * 分享数据
      * @param activity Activity
+     * @param title dialog title
      * @param channel {@link ShareConstant}
      * @param data {@link ShareEntity}
      * @param requestCode dd
      */
-    public static void startShare(Activity activity, int channel, ShareEntity data, int requestCode) {
+    public static void startShare(Activity activity, String title, int channel, ShareEntity data, int requestCode) {
         if (null == activity || activity.isFinishing()) {
             return;
         }
         Intent intent = new Intent(activity, ShareHandlerActivity.class);
+        intent.putExtra(ShareConstant.EXTRA_SHARE_TITLE, title);
         intent.putExtra(ShareConstant.EXTRA_SHARE_CHANNEL, channel);
         intent.putExtra(ShareConstant.EXTRA_SHARE_DATA, data);
         activity.startActivityForResult(intent, requestCode);
+    }
+
+    public static void startShare(Activity activity, int channel, ShareEntity data, int requestCode) {
+        startShare(activity, "", channel, data, requestCode);
     }
 
     /**
@@ -49,21 +55,23 @@ public class ShareUtil {
      * @param requestCode requestCode
      */
     public static void showShareDialog(Activity activity, ShareEntity data, int requestCode) {
-        showShareDialog(activity, ShareConstant.SHARE_CHANNEL_ALL, data, requestCode);
+        showShareDialog(activity, "", ShareConstant.SHARE_CHANNEL_ALL, data, requestCode);
     }
 
     /**
      * 调起ShareDialogActivity
      * @param activity Activity
+     * @param title the dialog title
      * @param data {@link ShareEntity}
      * @param channel {@link ShareConstant#SHARE_CHANNEL_ALL}
      * @param requestCode requestCode
      */
-    public static void showShareDialog(Activity activity, int channel, ShareEntity data, int requestCode) {
+    public static void showShareDialog(Activity activity, String title, int channel, ShareEntity data, int requestCode) {
         if (null == activity || activity.isFinishing()) {
             return;
         }
         Intent intent = new Intent(activity, ShareDialogActivity.class);
+        intent.putExtra(ShareConstant.EXTRA_SHARE_TITLE, title);
         intent.putExtra(ShareConstant.EXTRA_SHARE_DATA, data);
         intent.putExtra(ShareConstant.EXTRA_SHARE_CHANNEL, channel);
         activity.startActivityForResult(intent, requestCode);

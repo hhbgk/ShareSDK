@@ -11,6 +11,7 @@ import com.xyzlf.share.library.interfaces.ShareConstant;
 
 public abstract class ShareBaseActivity extends FragmentActivity {
     protected String tag = getClass().getSimpleName();
+    protected String mTitle;
     protected int channel;
 
     @Override
@@ -26,6 +27,7 @@ public abstract class ShareBaseActivity extends FragmentActivity {
     protected void initChannel() {
         try {
             //Fuzz问题处理
+            mTitle  = getIntent().getStringExtra(ShareConstant.EXTRA_SHARE_TITLE);
             channel = getIntent().getIntExtra(ShareConstant.EXTRA_SHARE_CHANNEL, ShareConstant.SHARE_CHANNEL_ALL);
         } catch (Exception e) {}
     }

@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         ShareEntity testBean = new ShareEntity("我是标题", "我是内容，描述内容。");
         testBean.setUrl("https://www.baidu.com"); //分享链接
         testBean.setImgUrl("https://www.baidu.com/img/bd_logo1.png");
-        ShareUtil.showShareDialog(this, testBean, ShareConstant.REQUEST_CODE);
+        ShareUtil.showShareDialog(this, "Share to", ShareConstant.SHARE_CHANNEL_ALL, testBean, ShareConstant.REQUEST_CODE);
     }
 
     @Override
@@ -112,7 +112,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 //        testBean.setImgUrl(filePath);
 
         int channel = ShareConstant.SHARE_CHANNEL_WEIXIN_FRIEND | ShareConstant.SHARE_CHANNEL_WEIXIN_CIRCLE | ShareConstant.SHARE_CHANNEL_SINA_WEIBO | ShareConstant.SHARE_CHANNEL_QQ;
-        ShareUtil.showShareDialog(this, channel, testBean, ShareConstant.REQUEST_CODE);
+        ShareUtil.showShareDialog(this, "share large picture", channel, testBean, ShareConstant.REQUEST_CODE);
     }
 
 }

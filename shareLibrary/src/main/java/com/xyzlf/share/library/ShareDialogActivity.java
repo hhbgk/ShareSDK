@@ -1,13 +1,10 @@
 package com.xyzlf.share.library;
 
-import android.app.Activity;
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.util.SparseArray;
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.ViewConfiguration;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
@@ -20,7 +17,6 @@ import com.xyzlf.share.library.bean.ShareEntity;
 import com.xyzlf.share.library.interfaces.ShareConstant;
 import com.xyzlf.share.library.util.ChannelUtil;
 import com.xyzlf.share.library.util.ShareUtil;
-import com.xyzlf.share.library.util.ToastUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,11 +28,13 @@ public class ShareDialogActivity extends ShareBaseActivity implements AdapterVie
 
     protected ShareEntity data;
     protected SparseArray<ShareEntity> sparseArray;
+    private TextView tvDialogTitle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.share_activity_dialog);
+        tvDialogTitle = findViewById(R.id.title);
 
         Object object = null;
         if (getIntent().hasExtra(ShareConstant.EXTRA_SHARE_DATA)) {
@@ -60,8 +58,7 @@ public class ShareDialogActivity extends ShareBaseActivity implements AdapterVie
         }
 
         if (null == object) {
-            ToastUtil.showToast(this, getString(R.string.share_empty_tip), true);
-            finish();
+            finishWithResult(channel, ShareConstant.SHARE_STATUS_CONTENT_EMPTY);
             return;
         }
 
@@ -71,14 +68,15 @@ public class ShareDialogActivity extends ShareBaseActivity implements AdapterVie
             sparseArray = (SparseArray<ShareEntity>) object;
         }
         if (data == null && sparseArray == null) {
-            ToastUtil.showToast(this, getString(R.string.share_empty_tip), true);
-            finish();
+            Log.e(tag, "data is null, sparseArray is null");
+            finishWithResult(channel, ShareConstant.SHARE_STATUS_CONTENT_EMPTY);
             return;
         }
 
         initChannelData();
         if (channelEntities.isEmpty()) {
-            finish();
+            Log.e(tag, "channel Entities is null=" + ShareConstant.SHARE_CHANNEL_ALL);
+            finishWithResult(channel, ShareConstant.SHARE_STATUS_NO_SHARE_APP);
             return;
         }
         initView();
@@ -125,6 +123,7 @@ public class ShareDialogActivity extends ShareBaseActivity implements AdapterVie
     }
 
     private void initView() {
+        tvDialogTitle.setText(mTitle);
         AppGridAdapter adapter = new AppGridAdapter();
         GridView shareGridView = findViewById(R.id.share_grid);
         shareGridView.setAdapter(adapter);

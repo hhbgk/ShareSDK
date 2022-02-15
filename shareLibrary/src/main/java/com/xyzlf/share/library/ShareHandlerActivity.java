@@ -90,7 +90,7 @@ public class ShareHandlerActivity extends ShareBaseActivity implements /*IWeiboH
                     break;
 
                 case ShareConstant.SHARE_CHANNEL_SYSTEM:
-                    new ShareBySystem(this).share(data, this);
+                    new ShareBySystem(this).share(data, this, mTitle);
                     break;
 
                 default:

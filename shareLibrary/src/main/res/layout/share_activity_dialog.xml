@@ -13,7 +13,6 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
-        android:text="@string/share_to"
         android:textColor="#333333"
         android:textSize="17sp"/>
 
