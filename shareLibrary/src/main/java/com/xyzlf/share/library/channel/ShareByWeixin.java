@@ -108,9 +108,9 @@ public class ShareByWeixin extends ShareBase {
                 } else {
                     //本地图片
                     if (data.isShareBigImg()) {
-                        shareImg(getLoacalBitmap(imgUrl), listener);
+                        shareImg(getLocalBitmap(imgUrl), listener);
                     } else {
-                        send(getLoacalBitmap(imgUrl));
+                        send(getLocalBitmap(imgUrl));
                     }
                 }
             } else if (data.getDrawableId() != 0) {
@@ -131,13 +131,12 @@ public class ShareByWeixin extends ShareBase {
             }
         } else {
             if (null != listener) {
-                listener.onShare(channel, ShareConstant.SHARE_STATUS_FAILED);
+                listener.onShare(channel, ShareConstant.SHARE_STATUS_NO_INSTALL);
             }
-            ToastUtil.showToast(context, R.string.share_no_weixin_client, true);
         }
     }
 
-    public Bitmap getLoacalBitmap(String localPath) {
+    public Bitmap getLocalBitmap(String localPath) {
         File file = new File(localPath);
         if (file.exists()) {
             try {
@@ -215,7 +214,7 @@ public class ShareByWeixin extends ShareBase {
                     if (null != listener) {
                         listener.onShare(channel, ShareConstant.SHARE_STATUS_COMPLETE);
                     }
-                    ToastUtil.showToast(context, R.string.share_success, true);
+//                    ToastUtil.showToast(context, R.string.share_success, true);
                 } else {
                     //分享失败
                     if (null != listener) {
@@ -269,9 +268,8 @@ public class ShareByWeixin extends ShareBase {
             }
         } else {
             if (null != listener) {
-                listener.onShare(channel, ShareConstant.SHARE_STATUS_FAILED);
+                listener.onShare(channel, ShareConstant.SHARE_STATUS_NO_INSTALL);
             }
-            ToastUtil.showToast(context, R.string.share_no_weixin_client, true);
         }
     }
 

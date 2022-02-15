@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">ShareSDK</string>
+    <string name="share_to">分享到</string>
+    <string name="show_share_dialog">显示分享界面</string>
+
+    <string name="share_qq">调用QQ分享</string>
+    <string name="share_weixin">调用微信分享</string>
+    <string name="share_wxcircle">调用朋友圈分享</string>
+    <string name="share_weibo">调用微博分享</string>
+    <string name="share_qzone">调用QZone分享</string>
+
+    <string name="share_bigimage">分享大图</string>
+
+    <!--微信-->
+    <string name="share_no_weixin_client">分享失败，请先安装微信</string>
+    <string name="share_no_weibo_client">分享失败，请先安装微博客户端</string>
+
+    <!--分享结果-->
+    <string name="share_success">分享成功</string>
+    <string name="share_failed">分享失败</string>
+    <string name="share_cancel">分享取消</string>
+    <string name="not_found_any_app">没找到用于分享的应用</string>
+
+</resources>

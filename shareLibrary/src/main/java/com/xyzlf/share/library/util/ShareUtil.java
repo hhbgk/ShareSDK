@@ -8,6 +8,7 @@ import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.os.Environment;
 import android.text.TextUtils;
+import android.util.Log;
 import android.util.SparseArray;
 
 import com.xyzlf.share.library.R;
@@ -23,13 +24,13 @@ import java.io.FileOutputStream;
  * Created by zhanglifeng on 15/6/4.
  */
 public class ShareUtil {
-
+    private static String tag = "ShareUtil";
     /**
      * 分享数据
      * @param activity Activity
      * @param channel {@link ShareConstant}
      * @param data {@link ShareEntity}
-     * @param requestCode {@link android.app.Activity#onActivityResult(int, int, Intent)}
+     * @param requestCode dd
      */
     public static void startShare(Activity activity, int channel, ShareEntity data, int requestCode) {
         if (null == activity || activity.isFinishing()) {
@@ -138,12 +139,13 @@ public class ShareUtil {
             return null;
         }
         if (null == bitmap) {
-            ToastUtil.showToast(context, R.string.share_save_bitmap_failed, true);
+            Log.e(tag, "Failed to save image");
             return null;
         }
         //SDCard is valid
         if (!Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState())) {
-            ToastUtil.showToast(context, R.string.share_save_bitmap_no_sdcard, true);
+//            ToastUtil.showToast(context, R.string.share_save_bitmap_no_sdcard, true);
+            Log.e(tag, "The SD card not mounted");
             return null;
         }
         String filePath = null;

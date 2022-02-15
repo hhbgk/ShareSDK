@@ -47,6 +47,7 @@ public class ShareConstant {
 
     /// <<<< share status
     public static final String EXTRA_SHARE_DATA = "extra_share_data";
+    public static final String EXTRA_SHARE_TITLE = "extra_dialog_title";
     public static final String EXTRA_SHARE_CHANNEL = "extra_show_channel";
     public static final String EXTRA_SHARE_STATUS = "extra_share_status";
 
@@ -54,6 +55,9 @@ public class ShareConstant {
     public static final int SHARE_STATUS_FAILED = 2;
     public static final int SHARE_STATUS_CANCEL = 3;
     public static final int SHARE_STATUS_ERROR = 4;
+    public static final int SHARE_STATUS_NO_INSTALL = 5;
+    public static final int SHARE_STATUS_CONTENT_EMPTY = 6;
+    public static final int SHARE_STATUS_NO_SHARE_APP = 7;
 
     public static final int SHARE_WEIBO_AUTH_COMPLETE = 20;
     public static final int SHARE_WEIBO_AUTH_CANCEL = 21;

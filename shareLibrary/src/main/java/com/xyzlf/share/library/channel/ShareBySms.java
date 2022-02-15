@@ -24,7 +24,9 @@ public class ShareBySms extends ShareBase {
     @Override
     public void share(ShareEntity data, OnShareListener listener) {
         if (data == null || TextUtils.isEmpty(data.getContent())) {
-            ToastUtil.showToast(context, R.string.share_empty_tip, true);
+            if (null != listener) {
+                listener.onShare(ShareConstant.SHARE_CHANNEL_SMS, ShareConstant.SHARE_STATUS_CONTENT_EMPTY);
+            }
             return;
         }
         String content;

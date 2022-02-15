@@ -47,8 +47,7 @@ public class ShareByWeibo2 extends ShareBase {
             isWeiboLiteInstalled = ChannelUtil.isWeiboLiteInstall(context);
         }
         if (!isWeiboInstalled && !isWeiboLiteInstalled) {
-            ToastUtil.showToast(context, R.string.share_no_weibo_client, true);
-            listener.onShare(ShareConstant.SHARE_CHANNEL_SINA_WEIBO, ShareConstant.SHARE_STATUS_FAILED);
+            listener.onShare(ShareConstant.SHARE_CHANNEL_SINA_WEIBO, ShareConstant.SHARE_STATUS_NO_INSTALL);
             return;
         }
         if (null == data) {

@@ -24,7 +24,9 @@ public class ShareByEmail extends ShareBase {
     @Override
     public void share(ShareEntity data, OnShareListener listener) {
         if (data == null || TextUtils.isEmpty(data.getContent())) {
-            ToastUtil.showToast(context, R.string.share_empty_tip, true);
+            if (null != listener) {
+                listener.onShare(ShareConstant.SHARE_CHANNEL_EMAIL, ShareConstant.SHARE_STATUS_CONTENT_EMPTY);
+            }
             return;
         }
         Intent email = new Intent(Intent.ACTION_SENDTO);

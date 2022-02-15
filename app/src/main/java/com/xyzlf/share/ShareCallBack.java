@@ -4,6 +4,7 @@ package com.xyzlf.share;
 import android.util.Log;
 
 import com.xyzlf.share.library.interfaces.ShareConstant;
+import com.xyzlf.share.library.util.ToastUtil;
 
 /**
  * Created by zhanglifeng on 2016/6/22
@@ -16,6 +17,7 @@ public class ShareCallBack {
      * @param status
      */
     public void onShareCallback(int channel, int status) {
+        Log.w(tag, "on Share Callback::channel=" + channel + ", status=" + status);
         switch (channel) {
             case ShareConstant.SHARE_CHANNEL_WEIXIN_FRIEND:
             case ShareConstant.SHARE_CHANNEL_WEIXIN_CIRCLE:
@@ -37,6 +39,21 @@ public class ShareCallBack {
             case ShareConstant.SHARE_CHANNEL_SYSTEM:
                 onSystemCallBack(status);
                 break;
+            case ShareConstant.SHARE_CHANNEL_ALL:
+                onAllAppCallback(status);
+                break;
+        }
+    }
+
+    private void onAllAppCallback(int status) {
+        switch (status) {
+            case ShareConstant.SHARE_STATUS_NO_SHARE_APP:
+                ToastUtil.showToast(MyApplication.getAppContext(), R.string.not_found_any_app, true);
+                break;
+            /** 取消 **/
+            case ShareConstant.SHARE_STATUS_CANCEL:
+                ToastUtil.showToast(MyApplication.getAppContext(), R.string.share_cancel, true);
+                break;
         }
     }
 
@@ -45,11 +62,18 @@ public class ShareCallBack {
         switch (status) {
             /** 成功 **/
             case ShareConstant.SHARE_STATUS_COMPLETE:
-                Log.e(tag, "WX success");
+                ToastUtil.showToast(MyApplication.getAppContext(), R.string.share_success, true);
                 break;
             /** 失败 **/
             case ShareConstant.SHARE_STATUS_FAILED:
-                Log.e(tag, "WX failed");
+                ToastUtil.showToast(MyApplication.getAppContext(), R.string.share_failed, true);
+                break;
+            case ShareConstant.SHARE_STATUS_NO_INSTALL:
+                ToastUtil.showToast(MyApplication.getAppContext(), R.string.share_no_weixin_client, true);
+                break;
+            /** 取消 **/
+            case ShareConstant.SHARE_STATUS_CANCEL:
+                ToastUtil.showToast(MyApplication.getAppContext(), R.string.share_cancel, true);
                 break;
         }
     }
@@ -59,15 +83,18 @@ public class ShareCallBack {
         switch (status) {
             /** 成功 **/
             case ShareConstant.SHARE_STATUS_COMPLETE:
-
+                ToastUtil.showToast(MyApplication.getAppContext(), R.string.share_success, true);
                 break;
             /** 失败 **/
             case ShareConstant.SHARE_STATUS_FAILED:
-
+                ToastUtil.showToast(MyApplication.getAppContext(), R.string.share_failed, true);
                 break;
             /** 取消 **/
             case ShareConstant.SHARE_STATUS_CANCEL:
-
+                ToastUtil.showToast(MyApplication.getAppContext(), R.string.share_cancel, true);
+                break;
+            case ShareConstant.SHARE_STATUS_NO_INSTALL:
+                ToastUtil.showToast(MyApplication.getAppContext(), R.string.share_no_weibo_client, true);
                 break;
         }
     }

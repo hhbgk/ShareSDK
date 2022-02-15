@@ -47,7 +47,7 @@ public class ShareByQQ extends ShareBase {
                 if (null != listener) {
                     listener.onShare(ShareConstant.SHARE_CHANNEL_QQ, ShareConstant.SHARE_STATUS_COMPLETE);
                 }
-                ToastUtil.showToast(context, R.string.share_success, true);
+//                ToastUtil.showToast(context, R.string.share_success, true);
             }
 
             @Override
@@ -65,7 +65,7 @@ public class ShareByQQ extends ShareBase {
                 if (null != listener) {
                     listener.onShare(ShareConstant.SHARE_CHANNEL_QQ, ShareConstant.SHARE_STATUS_CANCEL);
                 }
-                ToastUtil.showToast(context, R.string.share_cancel, true);
+//                ToastUtil.showToast(context, R.string.share_cancel, true);
             }
         };
 
