@@ -11,4 +11,5 @@ public interface IShareBase {
      * @param listener {@link OnShareListener}
      */
     void share(ShareEntity data, OnShareListener listener);
+    void share(ShareEntity data, OnShareListener listener, String title);
 }
