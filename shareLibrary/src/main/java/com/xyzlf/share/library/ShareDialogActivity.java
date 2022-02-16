@@ -23,7 +23,7 @@ import java.util.List;
 
 
 public class ShareDialogActivity extends ShareBaseActivity implements AdapterView.OnItemClickListener {
-
+    private GridView shareGridView;
     protected List<ChannelEntity> channelEntities;
 
     protected ShareEntity data;
@@ -125,7 +125,12 @@ public class ShareDialogActivity extends ShareBaseActivity implements AdapterVie
     private void initView() {
         tvDialogTitle.setText(mTitle);
         AppGridAdapter adapter = new AppGridAdapter();
-        GridView shareGridView = findViewById(R.id.share_grid);
+        shareGridView = findViewById(R.id.share_grid);
+        int size = channelEntities.size();
+        if (size >= 3) {
+            size = 3;
+        }
+        shareGridView.setNumColumns(size);
         shareGridView.setAdapter(adapter);
         shareGridView.setOnItemClickListener(this);
     }
