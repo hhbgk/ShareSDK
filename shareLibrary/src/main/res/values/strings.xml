@@ -1,6 +1,4 @@
 <resources>
-    <string name="app_name">ShareLibrary</string>
-
 <!--    <string name="share_weibosdk_auth_success">Authorization succeeded</string>-->
 <!--    <string name="share_weibosdk_auth_failed">Authorization failed</string>-->
 <!--    <string name="share_weibosdk_auth_canceled">Cancel authorization</string>-->
